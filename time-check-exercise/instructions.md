@@ -22,6 +22,10 @@ https://kubernetes.io/docs/concepts/configuration/configmap/
 
 https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
 
+https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/
+
+https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-organizing-with-namespaces
+
 ## error messages
 
 OCI runtime create failed: runc create failed: unable to start container process: exec: "bash": executable file not found in $PATH: unknown
@@ -32,6 +36,8 @@ First error was not having the configmap on the same namespace as the pod
 
 while is not a correct command to start the script with.
 
+Configmap values must be string, not a number (add quotes around the 12)
+
 I need to use the correct shebang which is /bin/bash instead of bash and I had a missing semicolon when I had that, do not change two things at a time, go one by one 
 
 ## Tip top top tip
@@ -39,3 +45,5 @@ I need to use the correct shebang which is /bin/bash instead of bash and I had a
 delete pod, and then run apply again to see changes
 
 use describe command to see error logs
+
+> $ kubectl get pods --namespace=test
